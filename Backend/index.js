@@ -21,11 +21,16 @@ app.post('/api/contact', async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   try {
-    // 1. Save to Database (Optional but recommended)
-    await pool.query(
-      'INSERT INTO contacts (name, email, subject, message) VALUES ($1, $2, $3, $4)',
-      [name, email, subject, message]
-    );
+    // 1. Save to Database (Optional)
+    try {
+      await pool.query(
+        'INSERT INTO contacts (name, email, subject, message) VALUES ($1, $2, $3, $4)',
+        [name, email, subject, message]
+      );
+    } catch (dbErr) {
+      console.error('Database save failed (skipping):', dbErr.message);
+      // We continue even if DB fails so the user can test the email
+    }
 
     // 2. Set up Nodemailer transporter
     // Note: You need to provide real credentials in .env for this to actually send emails

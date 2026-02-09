@@ -1,25 +1,17 @@
-import Navbar from "./components/Nav"
-import Navigation from "./components/navigation";
-import About from "./pages/About";
-import Campanys from "./pages/Campanys";
-import HeroSection from "./pages/Herosection";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-// import { About } from "./pages/About";
-// import { HeroSection } from "./pages/Herosection"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Companies from './pages/Companies';
 
 function App() {
   return (
-    <div className="bg-[#050505]">
-      <Navbar />
-      <HeroSection />
-      <Navigation/>
-      <Campanys/>
-      <About/>
-      <Contact/>
-      <Footer/>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/companies" element={<Companies />} />
+        {/* We can add a contact route later if needed, but for now it's on Home */}
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
