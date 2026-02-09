@@ -1,60 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Nav';
 import Footer from '../components/Footer';
 import Navigation from '../components/navigation';
 
-const companies = [
-  {
-    id: 1,
-    name: "Aria Sanat",
-    category: "Profile Production",
-    image: "/images/ARIYA_PROFILE.jpg-removebg-preview.png",
-    description: "A manufacturing and industrial trading company operating out of Herat, Afghanistan. Known for industrial profile production and metal processing.",
-    location: "Herat, Afghanistan"
-  },
-  {
-    id: 2,
-    name: "Folad Sanat",
-    category: "Iron & Steel",
-    image: "/images/FOLAD_PROFILE.jpg-removebg-preview.png",
-    description: "Leading the way in heavy industry and steel processing in Afghanistan, providing high-quality construction materials.",
-    location: "Herat, Afghanistan"
-  },
-  {
-    id: 3,
-    name: "Fazlli Ganzhawi",
-    category: "Pipe Production",
-    image: "/images/GHAZNAWI_PROFILE.jpg-removebg-preview.png",
-    description: "Specializing in high-quality pipe manufacturing and industrial solutions for major construction and infrastructure projects.",
-    location: "Kabul, Afghanistan"
-  },
-  {
-    id: 4,
-    name: "Herat Afghan",
-    category: "Industrial Profile",
-    image: "/images/HERAT_AFGHAN_PROFILE.jpg-removebg-preview.png",
-    description: "A hub of industrial innovation and production excellence, leading regional economic growth through quality manufacturing.",
-    location: "Herat, Afghanistan"
-  },
-  {
-    id: 5,
-    name: "Nawid Mazar",
-    category: "Industrial Solutions",
-    image: "/images/MAZAR_PROFILE.jpg-removebg-preview.png",
-    description: "Providing localized production solutions for large-scale infrastructure and industrial needs in Mazar-i-Sharif.",
-    location: "Mazar-i-Sharif, Afghanistan"
-  },
-  {
-    id: 6,
-    name: "General Metal",
-    category: "Steel Construction",
-    image: "/images/RIAL_PROFILE.jpg-removebg-preview.png",
-    description: "Building a stronger future through advanced metal processing and engineering, focused on quality and sustainability.",
-    location: "Herat, Afghanistan"
-  }
-];
-
 export default function Companies() {
+  const [companies, setCompanies] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/companies');
+        const data = await response.json();
+        // Combining static ones for now or just using dynamic ones
+        setCompanies(data);
+      } catch (error) {
+        console.error('Error fetching companies:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCompanies();
+  }, []);
+
   return (
     <div className="bg-[#050505] min-h-screen text-white">
       <Navbar />
@@ -71,12 +40,7 @@ export default function Companies() {
           </p>
         </div>
 
-        {/* Logo Strip Integration */}
-        <div className="mb-20">
-          <Navigation />
-        </div>
-
-        {/* Search & Filter (Visual only for now) */}
+        {/* Search & Filter */}
         <div className="max-w-7xl mx-auto mb-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="relative w-full md:w-96">
             <input 
@@ -90,52 +54,66 @@ export default function Companies() {
           </div>
           <div className="flex gap-4">
             <button className="px-6 py-2 rounded-full bg-[#FACC15] text-black font-bold text-sm">All</button>
-            <button className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:border-[#FACC15] transition-all">Steel</button>
-            <button className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:border-[#FACC15] transition-all">Profiles</button>
+            <Link to="/admin" className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:border-[#FACC15] transition-all flex items-center gap-2">
+              <span className="text-[#FACC15] font-bold">+</span> Add Company
+            </Link>
           </div>
         </div>
 
         {/* Grid */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {companies.map((company) => (
-            <div 
-              key={company.id}
-              className="group bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 hover:border-[#FACC15]/50 transition-all duration-500 flex flex-col"
-            >
-              <div className="h-48 mb-6 flex items-center justify-center bg-white/5 rounded-2xl p-6 group-hover:bg-white/10 transition-colors">
-                <img 
-                  src={company.image} 
-                  alt={company.name} 
-                  className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-              
-              <div className="flex-1">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <span className="text-[#FACC15] text-xs font-bold uppercase tracking-widest">{company.category}</span>
-                    <h3 className="text-2xl font-bold mt-1 group-hover:text-[#FACC15] transition-colors">{company.name}</h3>
+          {loading ? (
+             <div className="col-span-full py-20 text-center text-gray-500 uppercase tracking-widest text-sm animate-pulse">
+                Loading production units...
+             </div>
+          ) : companies.length > 0 ? (
+            companies.map((company) => (
+              <div 
+                key={company.id}
+                className="group bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 hover:border-[#FACC15]/50 transition-all duration-500 flex flex-col h-full"
+              >
+                <div className="h-48 mb-6 flex items-center justify-center bg-white/5 rounded-2xl p-6 group-hover:bg-white/10 transition-colors">
+                  <img 
+                    src={company.image || "/images/logo.jpeg"} 
+                    alt={company.name} 
+                    className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+                
+                <div className="flex-1">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <span className="text-[#FACC15] text-xs font-bold uppercase tracking-widest">{company.category}</span>
+                      <h3 className="text-2xl font-bold mt-1 group-hover:text-[#FACC15] transition-colors">{company.name}</h3>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    {company.description}
+                  </p>
+                  
+                  <div className="flex items-center text-gray-500 text-xs mb-8">
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {company.location}
                   </div>
                 </div>
-                
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                  {company.description}
-                </p>
-                
-                <div className="flex items-center text-gray-500 text-xs mb-8">
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  {company.location}
-                </div>
-              </div>
 
-              <button className="w-full py-4 rounded-xl border border-white/10 font-bold text-sm tracking-wider uppercase group-hover:bg-[#FACC15] group-hover:text-black group-hover:border-[#FACC15] transition-all">
-                View Profile
-              </button>
+                <button className="w-full py-4 rounded-xl border border-white/10 font-bold text-sm tracking-wider uppercase group-hover:bg-[#FACC15] group-hover:text-black group-hover:border-[#FACC15] transition-all mt-auto">
+                  View Profile
+                </button>
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center border border-dashed border-white/10 rounded-3xl">
+              <p className="text-gray-500 mb-6">No companies found in the union database.</p>
+              <Link to="/admin" className="px-8 py-3 bg-[#FACC15] text-black font-bold rounded-xl hover:bg-[#EAB308] transition-all">
+                Add Your First Company
+              </Link>
             </div>
-          ))}
+          )}
         </div>
       </main>
 
