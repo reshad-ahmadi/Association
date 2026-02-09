@@ -8,10 +8,40 @@ const ContactUs = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
+    type: null,
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    setLoading(true);
+    setStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Your message has been sent successfully!' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus({ type: 'error', message: data.error || 'Failed to send message.' });
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus({ type: 'error', message: 'Something went wrong. Please try again later.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -103,6 +133,16 @@ const ContactUs = () => {
           <div className="bg-[#0a0a0a] rounded-2xl p-8 lg:p-12 shadow-2xl border border-white/10">
             <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
             
+            {status.type && (
+              <div className={`mb-6 p-4 rounded-xl text-sm ${
+                status.type === 'success' 
+                  ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
+                  : 'bg-red-500/10 border border-red-500/20 text-red-400'
+              }`}>
+                {status.message}
+              </div>
+            )}
+            
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -163,12 +203,15 @@ const ContactUs = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#FACC15] hover:bg-[#EAB308] text-black font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-[#FACC15]/20 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2"
+                disabled={loading}
+                className={`w-full ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#EAB308] transform hover:-translate-y-0.5'} bg-[#FACC15] text-black font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-[#FACC15]/20 transition-all duration-200 flex items-center justify-center space-x-2`}
               >
-                <span>Send Message</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+                <span>{loading ? 'Sending...' : 'Send Message'}</span>
+                {!loading && (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                )}
               </button>
             </form>
           </div>

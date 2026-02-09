@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 const pool = require('./db');
 
 const app = express();
@@ -15,14 +16,48 @@ app.get('/', (req, res) => {
   res.send('Association Backend API is running...');
 });
 
-// Example route to test DB connection
-app.get('/test-db', async (req, res) => {
+// Contact Us Route
+app.post('/api/contact', async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
   try {
-    const result = await pool.query('SELECT NOW()');
-    res.json({ message: 'Database connected successfully', time: result.rows[0] });
+    // 1. Save to Database (Optional but recommended)
+    await pool.query(
+      'INSERT INTO contacts (name, email, subject, message) VALUES ($1, $2, $3, $4)',
+      [name, email, subject, message]
+    );
+
+    // 2. Set up Nodemailer transporter
+    // Note: You need to provide real credentials in .env for this to actually send emails
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: email,
+      to: process.env.ADMIN_EMAIL || 'ahreshadahmadi020@gmail.com',
+      subject: `New Contact Form Submission: ${subject}`,
+      text: `
+        Name: ${name}
+        Email: ${email}
+        Subject: ${subject}
+        Message: ${message}
+      `,
+    };
+
+    // 3. Send Email (Disabled by default until credentials are provided)
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      await transporter.sendMail(mailOptions);
+    }
+
+    res.status(200).json({ success: true, message: 'Message sent successfully' });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Database connection failed' });
+    console.error('Error handling contact form:', err);
+    res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 
