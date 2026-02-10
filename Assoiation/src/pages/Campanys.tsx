@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 import image1 from '../../public/images/WhatsApp Image 2026-02-07 at 4.07.57 PM.jpeg';
 import image2 from '../../public/images/WhatsApp Image 2026-02-07 at 4.22.59 PM.jpeg';
@@ -7,6 +8,7 @@ import image3 from '../../public/images/WhatsApp Image 2026-02-07 at 4.23.11 PM.
 export default function TaxationServices() {
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = 7;
+  const { t } = useLanguage();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,51 +29,51 @@ export default function TaxationServices() {
 
   const pageData = [
     { 
-      title: ["Aria Sanat", "PROFILE", "PRODUCT CO."], 
+      title: [t('slider_1_t1'), t('slider_1_t2'), t('slider_1_t3')], 
       desc: [
-        "Aria Sanat Profile Production Co. is a manufacturing and industrial trading company operating out of Herat, Afghanistan.The business is known to be involved in industrial profile production and related steel or metal processing activities.",
+        t('slider_1_desc'),
         ""
       ] 
     },
     { 
-      title: ["Afghanistan Steel", "MANUFACTURING", "FACTORIES UNION."], 
+      title: [t('slider_2_t1'), t('slider_2_t2'), t('slider_2_t3')], 
       desc: [
-        "Supporting the industrial growth and integration of manufacturing sectors across the region with a focus on steel and metal excellence.Providing essential infrastructure components for national development projects.",
+        t('slider_2_desc'),
         ""
       ] 
     },
     { 
-      title: ["Folad Sanat", "IRON & STEEL", "FACTORY."], 
+      title: [t('slider_3_t1'), t('slider_3_t2'), t('slider_3_t3')], 
       desc: [
-        "Leading the way in heavy industry and steel processing in Afghanistan. Equipped with modern technology to deliver high-quality construction materials for the local market.",
+        t('slider_3_desc'),
         ""
       ] 
     },
     { 
-      title: ["Fazlli Ganzhawi", "PIPE PRODUCTION", "COMPANY."], 
+      title: [t('slider_4_t1'), t('slider_4_t2'), t('slider_4_t3')], 
       desc: [
-        "Specializing in high-quality pipe manufacturing and industrial solutions.Dedicated to delivering professional infrastructure components for major construction projects.",
+        t('slider_4_desc'),
         ""
       ] 
     },
     { 
-      title: ["Industrial Manufacturing", "HERAT,", "AFGHANISTAN."], 
+      title: [t('slider_5_t1'), t('slider_5_t2'), t('slider_5_t3')], 
       desc: [
-        "A hub of industrial innovation and production excellence located in Herat's business district. Driving regional economic growth through dedicated manufacturing and trade services.",
+        t('slider_5_desc'),
         ""
       ] 
     },
     { 
-      title: ["Nawid Mazar", "INDUSTRIAL", "COMPANY."], 
+      title: [t('slider_6_t1'), t('slider_6_t2'), t('slider_6_t3')], 
       desc: [
-        "Expanding the reach of industrial manufacturing excellence to Mazar-i-Sharif and beyond.Providing localized production solutions for large-scale infrastructure and industrial needs.",
+        t('slider_6_desc'),
         ""
       ] 
     },
     { 
-      title: ["General Metal", "AND STEEL", "CONSTRUCTION."], 
+      title: [t('slider_7_t1'), t('slider_7_t2'), t('slider_7_t3')], 
       desc: [
-        "Building a stronger future for Afghanistan through advanced metal processing and engineering. A committed member of the manufacturing union focusing on quality and sustainability.",
+        t('slider_7_desc'),
         ""
       ] 
     }

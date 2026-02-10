@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const ContactUs = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +22,7 @@ const ContactUs = () => {
     setStatus({ type: null, message: '' });
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,14 +33,14 @@ const ContactUs = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setStatus({ type: 'success', message: 'Your message has been sent successfully!' });
+        setStatus({ type: 'success', message: t('success_message') });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        setStatus({ type: 'error', message: data.error || 'Failed to send message.' });
+        setStatus({ type: 'error', message: data.error || t('error_message') });
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      setStatus({ type: 'error', message: 'Something went wrong. Please try again later.' });
+      setStatus({ type: 'error', message: t('error_message') });
     } finally {
       setLoading(false);
     }
@@ -59,19 +61,19 @@ const ContactUs = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-4 block">( CONTACT US )</span>
+          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-4 block">{t('contact_header')}</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Get in Touch
+            {t('get_in_touch')}
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Have questions about our association? We're here to help and answer any question you might have.
+            {t('contact_desc')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact Information Card */}
           <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 lg:p-12 shadow-2xl relative overflow-hidden h-full">
-            <h3 className="text-2xl font-bold mb-8 text-white">Contact Information</h3>
+            <h3 className="text-2xl font-bold mb-8 text-white">{t('contact_info_title')}</h3>
             
             <div className="space-y-8">
               <div className="flex items-start space-x-4">
@@ -81,7 +83,7 @@ const ContactUs = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-1 text-white">Phone</h4>
+                  <h4 className="text-lg font-semibold mb-1 text-white">{t('phone')}</h4>
                   <p className="text-gray-400 hover:text-[#FACC15] transition-colors">+1 (555) 123-4567</p>
                   <p className="text-gray-500 text-sm mt-1">Mon-Fri 9am-6pm</p>
                 </div>
@@ -94,7 +96,7 @@ const ContactUs = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-1 text-white">Email</h4>
+                  <h4 className="text-lg font-semibold mb-1 text-white">{t('email')}</h4>
                   <p className="text-gray-400 hover:text-[#FACC15] transition-colors">info@association.com</p>
                   <p className="text-gray-500 text-sm mt-1">We reply within 24 hours</p>
                 </div>
@@ -108,7 +110,7 @@ const ContactUs = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-1 text-white">Office</h4>
+                  <h4 className="text-lg font-semibold mb-1 text-white">{t('office_label')}</h4>
                   <p className="text-gray-400">123 Business Avenue</p>
                   <p className="text-gray-500 text-sm mt-1">Suite 100, Tech City, TC 90210</p>
                 </div>
@@ -131,7 +133,7 @@ const ContactUs = () => {
 
           {/* Contact Form */}
           <div className="bg-[#0a0a0a] rounded-2xl p-8 lg:p-12 shadow-2xl border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">{t('send_message_title')}</h3>
             
             {status.type && (
               <div className={`mb-6 p-4 rounded-xl text-sm ${
@@ -146,7 +148,7 @@ const ContactUs = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">{t('full_name_label')}</label>
                   <input
                     type="text"
                     id="name"
@@ -154,12 +156,12 @@ const ContactUs = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-[#FACC15] focus:border-transparent transition-all duration-200 outline-none placeholder-gray-600"
-                    placeholder="John Doe"
+                    placeholder={t('placeholder_name')}
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">{t('email_address_label')}</label>
                   <input
                     type="email"
                     id="email"
@@ -167,14 +169,14 @@ const ContactUs = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-[#FACC15] focus:border-transparent transition-all duration-200 outline-none placeholder-gray-600"
-                    placeholder="john@example.com"
+                    placeholder={t('placeholder_email')}
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-2">Subject</label>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-2">{t('subject_label')}</label>
                 <input
                   type="text"
                   id="subject"
@@ -182,13 +184,13 @@ const ContactUs = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-[#FACC15] focus:border-transparent transition-all duration-200 outline-none placeholder-gray-600"
-                  placeholder="How can we help?"
+                  placeholder={t('placeholder_subject')}
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">{t('message_label')}</label>
                 <textarea
                   id="message"
                   name="message"
@@ -196,7 +198,7 @@ const ContactUs = () => {
                   onChange={handleChange}
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-[#FACC15] focus:border-transparent transition-all duration-200 outline-none resize-none placeholder-gray-600"
-                  placeholder="Your message here..."
+                  placeholder={t('placeholder_message')}
                   required
                 ></textarea>
               </div>
@@ -206,7 +208,7 @@ const ContactUs = () => {
                 disabled={loading}
                 className={`w-full ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#EAB308] transform hover:-translate-y-0.5'} bg-[#FACC15] text-black font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-[#FACC15]/20 transition-all duration-200 flex items-center justify-center space-x-2`}
               >
-                <span>{loading ? 'Sending...' : 'Send Message'}</span>
+                <span>{loading ? t('sending_btn') : t('send_message_btn')}</span>
                 {!loading && (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />

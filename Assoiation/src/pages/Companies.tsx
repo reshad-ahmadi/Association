@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Nav';
 import Footer from '../components/Footer';
 import Navigation from '../components/navigation';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Companies() {
   const [companies, setCompanies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/companies');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/companies`);
         const data = await response.json();
         // Combining static ones for now or just using dynamic ones
         setCompanies(data);
@@ -31,12 +33,12 @@ export default function Companies() {
       <main className="pt-32 pb-20 px-4 md:px-[70px]">
         {/* Header */}
         <div className="max-w-7xl mx-auto mb-16 text-center">
-          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-4 block">( OUR MEMBERS )</span>
+          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-4 block">{t('our_members')}</span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Leading <span className="text-[#FACC15]">Companies</span>
+            {t('leading')} <span className="text-[#FACC15]">{t('companies_highlight')}</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Discover the premier industrial manufacturers and factories that form the backbone of Afghanistan's steel and profile industry.
+            {t('companies_desc')}
           </p>
         </div>
 
@@ -45,7 +47,7 @@ export default function Companies() {
           <div className="relative w-full md:w-96">
             <input 
               type="text" 
-              placeholder="Search companies..." 
+              placeholder={t('search_placeholder')} 
               className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-12 focus:ring-2 focus:ring-[#FACC15] outline-none transition-all"
             />
             <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,9 +55,9 @@ export default function Companies() {
             </svg>
           </div>
           <div className="flex gap-4">
-            <button className="px-6 py-2 rounded-full bg-[#FACC15] text-black font-bold text-sm">All</button>
+            <button className="px-6 py-2 rounded-full bg-[#FACC15] text-black font-bold text-sm">{t('all')}</button>
             <Link to="/admin" className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:border-[#FACC15] transition-all flex items-center gap-2">
-              <span className="text-[#FACC15] font-bold">+</span> Add Company
+              <span className="text-[#FACC15] font-bold">+</span> {t('add_company')}
             </Link>
           </div>
         </div>
@@ -64,7 +66,7 @@ export default function Companies() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading ? (
              <div className="col-span-full py-20 text-center text-gray-500 uppercase tracking-widest text-sm animate-pulse">
-                Loading production units...
+                {t('loading_units')}
              </div>
           ) : companies.length > 0 ? (
             companies.map((company) => (
@@ -102,15 +104,15 @@ export default function Companies() {
                 </div>
 
                 <button className="w-full py-4 rounded-xl border border-white/10 font-bold text-sm tracking-wider uppercase group-hover:bg-[#FACC15] group-hover:text-black group-hover:border-[#FACC15] transition-all mt-auto">
-                  View Profile
+                  {t('view_profile')}
                 </button>
               </div>
             ))
           ) : (
             <div className="col-span-full py-20 text-center border border-dashed border-white/10 rounded-3xl">
-              <p className="text-gray-500 mb-6">No companies found in the union database.</p>
+              <p className="text-gray-500 mb-6">{t('no_companies_found')}</p>
               <Link to="/admin" className="px-8 py-3 bg-[#FACC15] text-black font-bold rounded-xl hover:bg-[#EAB308] transition-all">
-                Add Your First Company
+                {t('add_first_company')}
               </Link>
             </div>
           )}

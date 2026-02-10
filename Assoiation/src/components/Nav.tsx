@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe, ChevronDown } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+
+  // Map language codes to display names
+  const languages: { [key: string]: string } = {
+    en: 'English',
+    da: 'Dari',
+    ps: 'Pashto'
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -25,15 +35,44 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-wider">
           <li>
-            <Link to="/" className="hover:text-[#FACC15] transition-colors">Home</Link>
+            <Link to="/" className="hover:text-[#FACC15] transition-colors">{t('home')}</Link>
           </li>
           <li>
-            <Link to="/companies" className="hover:text-[#FACC15] transition-colors">Companies</Link>
+            <Link to="/companies" className="hover:text-[#FACC15] transition-colors">{t('companies')}</Link>
           </li>
           <li>
-            <a href="/#contact" className="hover:text-[#FACC15] transition-colors">Contact</a>
+            <a href="/#contact" className="hover:text-[#FACC15] transition-colors">{t('contact')}</a>
           </li>
         </ul>
+
+        {/* Desktop Language Dropdown */}
+        <div className="hidden md:flex relative ml-4 items-center">
+          <button 
+            onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+            className="flex items-center gap-1 text-sm font-medium uppercase tracking-wider hover:text-[#FACC15] transition-colors focus:outline-none text-white"
+          >
+            <Globe size={18} />
+            <span className="hidden lg:inline">{languages[language]}</span>
+            <ChevronDown size={14} className={`transition-transform duration-300 ${isLangDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {isLangDropdownOpen && (
+            <div className="absolute top-full right-0 mt-4 w-32 bg-black/90 backdrop-blur-md border border-white/10 rounded-lg shadow-xl py-2 flex flex-col z-50 animate-in fade-in zoom-in duration-200">
+              {(Object.keys(languages) as Array<keyof typeof languages>).map((langCode) => (
+                <button
+                  key={langCode}
+                  onClick={() => {
+                    setLanguage(langCode);
+                    setIsLangDropdownOpen(false);
+                  }}
+                  className={`text-left px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-colors ${language === langCode ? 'text-[#FACC15] font-bold' : ''}`}
+                >
+                  {languages[langCode]}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Mobile Hamburger Button */}
         <button 
@@ -54,7 +93,7 @@ export default function Navbar() {
                   onClick={() => setIsMenuOpen(false)}
                   className="block py-2 text-gray-300 hover:text-[#FACC15] transition-colors border-b border-white/5"
                 >
-                  Home
+                  {t('home')}
                 </Link>
               </li>
               <li>
@@ -63,7 +102,7 @@ export default function Navbar() {
                   onClick={() => setIsMenuOpen(false)}
                   className="block py-2 text-gray-300 hover:text-[#FACC15] transition-colors border-b border-white/5"
                 >
-                  Companies
+                  {t('companies')}
                 </Link>
               </li>
               <li>
@@ -72,10 +111,36 @@ export default function Navbar() {
                   onClick={() => setIsMenuOpen(false)}
                   className="block py-2 text-gray-300 hover:text-[#FACC15] transition-colors"
                 >
-                  Contact
+                  {t('contact')}
                 </a>
               </li>
             </ul>
+            
+            {/* Mobile Language Selection */}
+            <div className="mt-6 pt-6 border-t border-white/5 flex flex-col items-center gap-4">
+              <div className="flex items-center gap-2 text-gray-400 text-sm uppercase tracking-wider font-medium">
+                <Globe size={16} />
+                <span>{t('select_language')}</span>
+              </div>
+              <div className="flex gap-4">
+                {(Object.keys(languages) as Array<keyof typeof languages>).map((langCode) => (
+                  <button
+                    key={langCode}
+                    onClick={() => {
+                      setLanguage(langCode);
+                      setIsMenuOpen(false);
+                    }}
+                    className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border transition-all ${
+                      language === langCode 
+                        ? 'bg-[#FACC15]/10 border-[#FACC15] text-[#FACC15]' 
+                        : 'border-transparent text-gray-500 hover:text-gray-300'
+                    }`}
+                  >
+                    {languages[langCode].substring(0, 3)}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>

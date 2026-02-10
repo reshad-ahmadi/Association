@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Navigation() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { t } = useLanguage();
 
   const images = [
     "/images/ARIYA_PROFILE.jpg-removebg-preview.png",
@@ -27,7 +29,7 @@ export default function Navigation() {
     <div>
    <div className="flex items-center justify-center gap-4 mb-6 text-gray-500 text-[10px] sm:text-sm md:text-xs font-medium tracking-widest uppercase opacity-60">
     <div className="h-[1px] w-8 sm:w-12 md:w-10 bg-gray-700"></div>
-    <span className="whitespace-nowrap">Trusted by Leaders</span>
+    <span className="whitespace-nowrap">{t('trusted_leaders')}</span>
     <div className="h-[1px] w-8 sm:w-12 md:w-10 bg-gray-700"></div>
   </div>
  

@@ -1,23 +1,26 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function About() {
+  const { t } = useLanguage();
+
   const stats = [
     {
       number: "50+",
-      label: "Leading Factories",
-      description: "Our union represents the largest network of industrial manufacturing plants across Afghanistan, setting the benchmark for steel and profile production.",
+      label: t('stats_factories_label'),
+      description: t('stats_factories_desc'),
       marginTop: "md:mt-0"
     },
     {
       number: "15+",
-      label: "Provinces Covered",
-      description: "From Herat to Mazar, our reach extends across major industrial hubs, ensuring consistent supply and high-grade manufacturing standards nationwide.",
+      label: t('stats_provinces_label'),
+      description: t('stats_provinces_desc'),
       marginTop: "md:mt-12" 
     },
     {
       number: "100%",
-      label: "Quality Standards",
-      description: "We are committed to international manufacturing excellence, ensuring every iron, pipe, and profile product meets the highest industrial benchmarks.",
+      label: t('stats_quality_label'),
+      description: t('stats_quality_desc'),
       marginTop: "md:mt-24"
     }
   ];
@@ -28,11 +31,9 @@ export default function About() {
         
         {/* Header Section */}
         <div className="text-center mb-12 md:mb-20">
-          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-6 block">( ABOUT OUR UNION )</span>
+          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-6 block">{t('about_header')}</span>
           <h2 className="text-[15px] sm:text-base md:text-lg lg:text-xl md:max-w-[500px] font-medium leading-relaxed max-w-4xl mx-auto text-gray-300">
-            Strengthening Afghanistan's industrial future by fostering collaboration, 
-            promoting high-quality local production, and building a unified front 
-            for sustainable manufacturing growth.
+            {t('about_desc')}
           </h2>
         </div>
 

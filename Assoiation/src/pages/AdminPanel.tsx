@@ -39,7 +39,7 @@ export default function AdminPanel() {
         const uploadData = new FormData();
         uploadData.append('image', imageFile);
 
-        const uploadRes = await fetch('http://localhost:5000/api/upload', {
+        const uploadRes = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
           method: 'POST',
           body: uploadData,
         });
@@ -50,7 +50,7 @@ export default function AdminPanel() {
       }
 
       // 2. Add Company
-      const response = await fetch('http://localhost:5000/api/companies', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/companies`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, image: finalImageUrl }),

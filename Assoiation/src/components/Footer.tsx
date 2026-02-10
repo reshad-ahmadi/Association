@@ -1,7 +1,12 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
+
+  const quickLinks = ['about_us', 'our_mission', 'events', 'membership', 'news_updates'];
+  const resourceLinks = ['documentation', 'support_center', 'privacy_policy', 'terms_service', 'community'];
 
   return (
     <footer className="relative bg-[#050505] text-white pt-10 sm:pt-20 pb-8 sm:pb-10 overflow-hidden border-t border-white/5">
@@ -18,7 +23,7 @@ const Footer = () => {
               <span className="text-gray-300 text-[10px] sm:text-xs font-medium tracking-wide uppercase">Association</span>
             </div>
             <p className="text-gray-400 leading-relaxed text-xs sm:text-sm max-w-xs">
-              Empowering communities and fostering growth through collaboration and innovation. Join us in making a difference.
+              {t('association_desc')}
             </p>
             <div className="flex space-x-3 pt-1">
               {['X', 'Facebook', 'LinkedIn'].map((social, idx) => (
@@ -35,13 +40,13 @@ const Footer = () => {
 
           {/* Quick Links - Half width on mobile */}
           <div className="col-span-1 space-y-4 sm:space-y-6">
-            <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">Quick Links</h4>
+            <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">{t('quick_links')}</h4>
             <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
-              {['About Us', 'Our Mission', 'Events', 'Membership', 'News & Updates'].map((item) => (
+              {quickLinks.map((item) => (
                 <li key={item}>
                   <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 flex items-center group">
                     <span className="w-0 group-hover:w-2 h-[1px] bg-[#FACC15] mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                    {item}
+                    {t(item)}
                   </a>
                 </li>
               ))}
@@ -50,13 +55,13 @@ const Footer = () => {
 
           {/* Resources - Half width on mobile */}
           <div className="col-span-1 space-y-4 sm:space-y-6">
-            <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">Resources</h4>
+            <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">{t('resources')}</h4>
              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
-              {['Documentation', 'Support Center', 'Privacy Policy', 'Terms of Service', 'Community'].map((item) => (
+              {resourceLinks.map((item) => (
                 <li key={item}>
                   <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 flex items-center group">
                     <span className="w-0 group-hover:w-2 h-[1px] bg-[#FACC15] mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                    {item}
+                    {t(item)}
                   </a>
                 </li>
               ))}
@@ -65,12 +70,12 @@ const Footer = () => {
 
           {/* Newsletter - Full width on mobile */}
           <div className="col-span-2 lg:col-span-1 space-y-4 sm:space-y-6">
-            <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">Stay Updated</h4>
-            <p className="text-gray-400 text-xs sm:text-sm">Subscribe to our newsletter for the latest updates.</p>
+            <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">{t('stay_updated')}</h4>
+            <p className="text-gray-400 text-xs sm:text-sm">{t('newsletter_desc')}</p>
             <div className="relative">
               <input 
                 type="email" 
-                placeholder="Enter your email" 
+                placeholder={t('email_placeholder')} 
                 className="w-full bg-white/5 border border-white/10 text-white px-4 py-2.5 sm:py-3 rounded-xl focus:outline-none focus:border-[#FACC15]/50 focus:ring-1 focus:ring-[#FACC15]/50 transition-all text-xs sm:text-sm placeholder-gray-600"
               />
               <button className="absolute right-1 top-1 bg-[#FACC15] hover:bg-[#EAB308] text-black p-2 rounded-lg transition-colors duration-200 shadow-lg scale-90 sm:scale-100">
@@ -84,11 +89,11 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 sm:pt-8 mt-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-[10px] sm:text-xs md:text-sm text-gray-500 text-center md:text-left">
-          <p>© {currentYear} Association. All rights reserved.</p>
+          <p>© {currentYear} {t('rights_reserved_text')}</p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
-            <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 whitespace-nowrap">Privacy Policy</a>
-            <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 whitespace-nowrap">Terms of Service</a>
-            <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 whitespace-nowrap">Cookies Settings</a>
+            <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 whitespace-nowrap">{t('privacy_policy')}</a>
+            <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 whitespace-nowrap">{t('terms_service')}</a>
+            <a href="#" className="hover:text-[#FACC15] transition-colors duration-200 whitespace-nowrap">{t('cookies_settings')}</a>
           </div>
         </div>
       </div>
