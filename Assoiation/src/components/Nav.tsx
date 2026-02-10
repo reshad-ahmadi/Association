@@ -62,7 +62,7 @@ export default function Navbar() {
                 <button
                   key={langCode}
                   onClick={() => {
-                    setLanguage(langCode);
+                    setLanguage(langCode as 'en' | 'da' | 'ps');
                     setIsLangDropdownOpen(false);
                   }}
                   className={`text-left px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-colors ${language === langCode ? 'text-[#FACC15] font-bold' : ''}`}
@@ -127,7 +127,7 @@ export default function Navbar() {
                   <button
                     key={langCode}
                     onClick={() => {
-                      setLanguage(langCode);
+                      setLanguage(langCode as 'en' | 'da' | 'ps');
                       setIsMenuOpen(false);
                     }}
                     className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border transition-all ${
