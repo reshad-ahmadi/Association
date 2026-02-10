@@ -27,7 +27,7 @@ export default function Companies() {
   }, []);
 
   return (
-    <div className="bg-[#050505] min-h-screen text-white">
+    <div className="bg-brand-bg min-h-screen text-white">
       <Navbar />
       
       <main className="pt-32 pb-20 px-4 md:px-[70px]">
@@ -35,7 +35,7 @@ export default function Companies() {
         <div className="max-w-7xl mx-auto mb-16 text-center">
           <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-4 block">{t('our_members')}</span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            {t('leading')} <span className="text-[#FACC15]">{t('companies_highlight')}</span>
+            {t('leading')} <span className="text-brand-primary">{t('companies_highlight')}</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             {t('companies_desc')}
@@ -48,16 +48,16 @@ export default function Companies() {
             <input 
               type="text" 
               placeholder={t('search_placeholder')} 
-              className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-12 focus:ring-2 focus:ring-[#FACC15] outline-none transition-all"
+              className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-12 focus:ring-2 focus:ring-brand-primary outline-none transition-all"
             />
             <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
           <div className="flex gap-4">
-            <button className="px-6 py-2 rounded-full bg-[#FACC15] text-black font-bold text-sm">{t('all')}</button>
-            <Link to="/admin" className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:border-[#FACC15] transition-all flex items-center gap-2">
-              <span className="text-[#FACC15] font-bold">+</span> {t('add_company')}
+            <button className="px-6 py-2 rounded-full bg-brand-primary text-black font-bold text-sm">{t('all')}</button>
+            <Link to="/admin" className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:border-brand-primary transition-all flex items-center gap-2">
+              <span className="text-brand-primary font-bold">+</span> {t('add_company')}
             </Link>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Companies() {
             companies.map((company) => (
               <div 
                 key={company.id}
-                className="group bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 hover:border-[#FACC15]/50 transition-all duration-500 flex flex-col h-full"
+                className="group bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 hover:border-brand-primary/50 transition-all duration-500 flex flex-col h-full"
               >
                 <div className="h-48 mb-6 flex items-center justify-center bg-white/5 rounded-2xl p-6 group-hover:bg-white/10 transition-colors">
                   <img 
@@ -85,8 +85,8 @@ export default function Companies() {
                 <div className="flex-1">
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <span className="text-[#FACC15] text-xs font-bold uppercase tracking-widest">{company.category}</span>
-                      <h3 className="text-2xl font-bold mt-1 group-hover:text-[#FACC15] transition-colors">{company.name}</h3>
+                      <span className="text-brand-primary text-xs font-bold uppercase tracking-widest">{company.category}</span>
+                      <h3 className="text-2xl font-bold mt-1 group-hover:text-brand-primary transition-colors">{company.name}</h3>
                     </div>
                   </div>
                   
@@ -103,7 +103,7 @@ export default function Companies() {
                   </div>
                 </div>
 
-                <button className="w-full py-4 rounded-xl border border-white/10 font-bold text-sm tracking-wider uppercase group-hover:bg-[#FACC15] group-hover:text-black group-hover:border-[#FACC15] transition-all mt-auto">
+                <button className="w-full py-4 rounded-xl border border-white/10 font-bold text-sm tracking-wider uppercase group-hover:bg-brand-primary group-hover:text-black group-hover:border-brand-primary transition-all mt-auto">
                   {t('view_profile')}
                 </button>
               </div>
@@ -111,7 +111,7 @@ export default function Companies() {
           ) : (
             <div className="col-span-full py-20 text-center border border-dashed border-white/10 rounded-3xl">
               <p className="text-gray-500 mb-6">{t('no_companies_found')}</p>
-              <Link to="/admin" className="px-8 py-3 bg-[#FACC15] text-black font-bold rounded-xl hover:bg-[#EAB308] transition-all">
+              <Link to="/admin" className="px-8 py-3 bg-brand-primary text-black font-bold rounded-xl hover:bg-brand-secondary transition-all">
                 {t('add_first_company')}
               </Link>
             </div>

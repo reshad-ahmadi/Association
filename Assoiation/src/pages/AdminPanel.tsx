@@ -73,14 +73,14 @@ export default function AdminPanel() {
   };
 
   return (
-    <div className="bg-[#050505] min-h-screen text-white">
+    <div className="bg-brand-bg min-h-screen text-white">
       <Navbar />
       
       <main className="pt-32 pb-20 px-4 md:px-[70px]">
         <div className="max-w-3xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
           <div className="mb-10 text-center">
-            <span className="text-[#FACC15] text-xs font-bold uppercase tracking-widest block mb-4">Admin Dashboard</span>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Add New <span className="text-[#FACC15]">Company</span></h1>
+            <span className="text-brand-primary text-xs font-bold uppercase tracking-widest block mb-4">Admin Dashboard</span>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Add New <span className="text-brand-primary">Company</span></h1>
           </div>
 
           {message.text && (
@@ -97,7 +97,7 @@ export default function AdminPanel() {
                 <label className="block text-sm text-gray-400 mb-2">Company Name</label>
                 <input 
                   type="text" name="name" required value={formData.name} onChange={handleChange}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#FACC15] transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-primary transition-all"
                   placeholder="e.g. Aria Sanat"
                 />
               </div>
@@ -105,7 +105,7 @@ export default function AdminPanel() {
                 <label className="block text-sm text-gray-400 mb-2">Category</label>
                 <select 
                   name="category" required value={formData.category} onChange={handleChange}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#FACC15] transition-all text-gray-300"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-primary transition-all text-gray-300"
                 >
                   <option value="">Select Category</option>
                   <option value="Profile Production">Profile Production</option>
@@ -121,7 +121,7 @@ export default function AdminPanel() {
               <label className="block text-sm text-gray-400 mb-2">Location</label>
               <input 
                 type="text" name="location" required value={formData.location} onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#FACC15] transition-all"
+                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-primary transition-all"
                 placeholder="e.g. Herat, Afghanistan"
               />
             </div>
@@ -133,7 +133,7 @@ export default function AdminPanel() {
                   type="file" 
                   accept="image/*" 
                   onChange={handleFileChange}
-                  className="w-full bg-white/5 border border-dashed border-white/20 rounded-xl py-6 px-4 outline-none focus:border-[#FACC15] transition-all text-center file:hidden cursor-pointer hover:bg-white/10"
+                  className="w-full bg-white/5 border border-dashed border-white/20 rounded-xl py-6 px-4 outline-none focus:border-brand-primary transition-all text-center file:hidden cursor-pointer hover:bg-white/10"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-gray-400 group-hover/upload:text-white transition-colors">
                   <svg className="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@ export default function AdminPanel() {
               <label className="block text-sm text-gray-400 mb-2">Description</label>
               <textarea 
                 name="description" rows={4} required value={formData.description} onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#FACC15] transition-all resize-none"
+                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-primary transition-all resize-none"
                 placeholder="Tell us about the company..."
               ></textarea>
             </div>
@@ -164,7 +164,7 @@ export default function AdminPanel() {
               </button>
               <button 
                 type="submit" disabled={loading}
-                className="flex-[2] py-4 rounded-xl bg-[#FACC15] text-black font-bold text-sm uppercase tracking-wider hover:bg-[#EAB308] disabled:opacity-50 transition-all shadow-lg shadow-[#FACC15]/20"
+                className="flex-[2] py-4 rounded-xl bg-brand-primary text-black font-bold text-sm uppercase tracking-wider hover:bg-brand-secondary disabled:opacity-50 transition-all shadow-lg shadow-brand-primary/20"
               >
                 {loading ? 'Adding...' : 'Save Company'}
               </button>

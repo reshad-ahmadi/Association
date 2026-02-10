@@ -80,7 +80,7 @@ export default function TaxationServices() {
   ];
 
   return (
-    <div className="relative bg-[#050505]">
+    <div className="relative bg-brand-bg">
       <div className="relative overflow-hidden min-h-[80vh] flex items-center">
         {pageData.map((page, index) => (
           <div 
@@ -109,7 +109,7 @@ export default function TaxationServices() {
                       key={i} 
                       className={`leading-tight inline-block ${
                         i >= 1 
-                          ? 'text-3xl md:text-[40px] lg:text-[58px] 2xl:text-[90px] text-[#FACC15] font-extrabold mt-1 uppercase tracking-tight' 
+                          ? 'text-3xl md:text-[40px] lg:text-[58px] 2xl:text-[90px] text-brand-primary font-extrabold mt-1 uppercase tracking-tight' 
                           : 'text-xl md:text-[24px] lg:text-[36px] 2xl:text-[56px] text-white font-bold opacity-90'
                       }`}
                     >
@@ -145,13 +145,13 @@ export default function TaxationServices() {
         <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4 md:px-12 transform -translate-y-1/2 z-20">
           <button
             onClick={() => setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages)}
-            className="p-1 sm:p-1.5 md:p-2 rounded-full bg-white/5 border border-white/10 hover:bg-[#FACC15] hover:text-black transition-all group"
+            className="p-1 sm:p-1.5 md:p-2 rounded-full bg-white/5 border border-white/10 hover:bg-brand-primary hover:text-black transition-all group"
           >
             <span className="text-lg sm:text-xl md:text-2xl leading-none">&lsaquo;</span>
           </button>
           <button
             onClick={() => setCurrentPage((prev) => (prev + 1) % totalPages)}
-            className="p-1 sm:p-1.5 md:p-2 rounded-full bg-white/5 border border-white/10 hover:bg-[#FACC15] hover:text-black transition-all group"
+            className="p-1 sm:p-1.5 md:p-2 rounded-full bg-white/5 border border-white/10 hover:bg-brand-primary hover:text-black transition-all group"
           >
             <span className="text-lg sm:text-xl md:text-2xl leading-none">&rsaquo;</span>
           </button>
@@ -164,7 +164,7 @@ export default function TaxationServices() {
               key={index}
               onClick={() => setCurrentPage(index)}
               className={`h-1 rounded-full transition-all duration-300 ${
-                index === currentPage ? 'w-8 bg-[#FACC15]' : 'w-2 bg-white/20'
+                index === currentPage ? 'w-8 bg-brand-primary' : 'w-2 bg-white/20'
               }`}
             />
           ))}

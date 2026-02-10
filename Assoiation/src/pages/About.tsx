@@ -26,7 +26,7 @@ export default function About() {
   ];
 
   return (
-    <section className="bg-[#050505] text-white py-12 px-[5px] relative overflow-hidden" id="about">
+    <section className="bg-brand-bg text-white py-12 px-[5px] relative overflow-hidden" id="about">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -44,7 +44,7 @@ export default function About() {
               key={index} 
               className={`flex flex-col border-l border-gray-800 pl-5 md:pl-6 ${stat.marginTop} transition-all duration-500 hover:border-gray-600`}
             >
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#EAB308] mb-3 py-1">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary mb-3 py-1">
                 {stat.number}
               </h3>
               <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
