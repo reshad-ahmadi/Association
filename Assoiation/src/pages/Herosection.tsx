@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-[#0B1222] text-white overflow-hidden flex flex-col justify-center items-center pt-32 pb-0 mb-5 md:mb-[130px]">
+    <section className="relative bg-[#0B1222] text-white overflow-hidden flex flex-col justify-center items-center pt-32 pb-0">
       
       {/* Background Image with High-Intensity Industrial Overlay */}
       <div className="absolute inset-0 z-0">
