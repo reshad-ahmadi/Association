@@ -54,121 +54,136 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="relative bg-brand-bg text-white py-24 px-4 md:px-[70px] overflow-hidden" id="contact">
-      
-      {/* Background Grid Pattern (From Hero) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+    <section className="relative bg-brand-bg text-white py-20 sm:py-28 px-4 md:px-[70px] overflow-hidden" id="contact">
+
+      {/* Subtle background accents */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-4 block">{t('contact_header')}</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+        {/* Section Header */}
+        <div className="text-center mb-14 sm:mb-20">
+          <span className="text-gray-500 text-sm tracking-[0.2em] uppercase mb-4 block">
+            {t('contact_header')}
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight">
             {t('get_in_touch')}
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
             {t('contact_desc')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-stretch">
+          
           {/* Contact Information Card */}
-          <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 lg:p-12 shadow-2xl relative overflow-hidden h-full">
-            <h3 className="text-2xl font-bold mb-8 text-white">{t('contact_info_title')}</h3>
+          <div className="lg:col-span-2 bg-[#0B1222] border border-white/5 hover:border-brand-primary/20 rounded-xl p-7 sm:p-10 transition-all duration-500 flex flex-col">
+            <h3 className="text-xl sm:text-2xl font-bold mb-8 text-white">{t('contact_info_title')}</h3>
             
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white/5 rounded-lg border border-white/10 text-brand-primary">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            <div className="flex flex-col gap-7 flex-1">
+              {/* Phone */}
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 bg-brand-primary/10 rounded-lg border border-brand-primary/20 text-brand-primary flex-shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-1 text-white">{t('phone')}</h4>
-                  <p className="text-gray-400 hover:text-brand-primary transition-colors">+1 (555) 123-4567</p>
-                  <p className="text-gray-500 text-sm mt-1">Mon-Fri 9am-6pm</p>
+                  <h4 className="text-sm font-semibold mb-1 text-white">{t('phone')}</h4>
+                  <p className="text-gray-400 text-sm hover:text-brand-primary transition-colors cursor-pointer">+93 (0) 799 123 456</p>
+                  <p className="text-gray-600 text-xs mt-1">Sat-Thu 8am-5pm</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white/5 rounded-lg border border-white/10 text-brand-primary">
-                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              {/* Email */}
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 bg-brand-primary/10 rounded-lg border border-brand-primary/20 text-brand-primary flex-shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-1 text-white">{t('email')}</h4>
-                  <p className="text-gray-400 hover:text-brand-primary transition-colors">info@association.com</p>
-                  <p className="text-gray-500 text-sm mt-1">We reply within 24 hours</p>
+                  <h4 className="text-sm font-semibold mb-1 text-white">{t('email')}</h4>
+                  <p className="text-gray-400 text-sm hover:text-brand-primary transition-colors cursor-pointer">info@ironpipes-union.af</p>
+                  <p className="text-gray-600 text-xs mt-1">We reply within 24 hours</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white/5 rounded-lg border border-white/10 text-brand-primary">
-                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              {/* Office */}
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 bg-brand-primary/10 rounded-lg border border-brand-primary/20 text-brand-primary flex-shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold mb-1 text-white">{t('office_label')}</h4>
-                  <p className="text-gray-400">123 Business Avenue</p>
-                  <p className="text-gray-500 text-sm mt-1">Suite 100, Tech City, TC 90210</p>
+                  <h4 className="text-sm font-semibold mb-1 text-white">{t('office_label')}</h4>
+                  <p className="text-gray-400 text-sm">Herat Industrial Zone</p>
+                  <p className="text-gray-600 text-xs mt-1">Afghanistan</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-12 flex space-x-4">
-              {['X', 'Facebook', 'LinkedIn'].map((social, idx) => (
-                <button key={idx} className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all duration-300 text-gray-400">
-                  <span className="sr-only">{social}</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10z" opacity="0.5"/> 
-                    {/* Placeholder icon path, keeping it simple as specific paths were long */}
-                    <circle cx="12" cy="12" r="4" />
+            {/* Social Links */}
+            <div className="mt-10 pt-7 border-t border-white/5 flex gap-3">
+              {[
+                { label: 'Facebook', path: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z' },
+                { label: 'Twitter', path: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
+                { label: 'LinkedIn', path: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z' },
+              ].map((social, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  aria-label={social.label}
+                  className="p-2.5 bg-white/5 border border-white/5 rounded-lg hover:bg-brand-primary/10 hover:border-brand-primary/30 hover:text-brand-primary text-gray-500 transition-all duration-300"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={social.path} />
                   </svg>
-                </button>
+                </a>
               ))}
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-[#0a0a0a] rounded-2xl p-8 lg:p-12 shadow-2xl border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-6">{t('send_message_title')}</h3>
+          <div className="lg:col-span-3 bg-[#0B1222] rounded-xl p-7 sm:p-10 border border-white/5 hover:border-brand-primary/20 transition-all duration-500">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-7">{t('send_message_title')}</h3>
             
             {status.type && (
-              <div className={`mb-6 p-4 rounded-xl text-sm ${
+              <div className={`mb-6 p-4 rounded-lg text-sm border ${
                 status.type === 'success' 
-                  ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
-                  : 'bg-red-500/10 border border-red-500/20 text-red-400'
+                  ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
+                  : 'bg-red-500/10 border-red-500/20 text-red-400'
               }`}>
                 {status.message}
               </div>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">{t('full_name_label')}</label>
+                  <label htmlFor="name" className="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">{t('full_name_label')}</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all duration-200 outline-none placeholder-gray-600"
+                    className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm focus:ring-1 focus:ring-brand-primary/50 focus:border-brand-primary/40 transition-all duration-200 outline-none placeholder-gray-600"
                     placeholder={t('placeholder_name')}
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">{t('email_address_label')}</label>
+                  <label htmlFor="email" className="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">{t('email_address_label')}</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all duration-200 outline-none placeholder-gray-600"
+                    className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm focus:ring-1 focus:ring-brand-primary/50 focus:border-brand-primary/40 transition-all duration-200 outline-none placeholder-gray-600"
                     placeholder={t('placeholder_email')}
                     required
                   />
@@ -176,28 +191,28 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-2">{t('subject_label')}</label>
+                <label htmlFor="subject" className="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">{t('subject_label')}</label>
                 <input
                   type="text"
                   id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all duration-200 outline-none placeholder-gray-600"
+                  className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm focus:ring-1 focus:ring-brand-primary/50 focus:border-brand-primary/40 transition-all duration-200 outline-none placeholder-gray-600"
                   placeholder={t('placeholder_subject')}
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">{t('message_label')}</label>
+                <label htmlFor="message" className="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">{t('message_label')}</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all duration-200 outline-none resize-none placeholder-gray-600"
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm focus:ring-1 focus:ring-brand-primary/50 focus:border-brand-primary/40 transition-all duration-200 outline-none resize-none placeholder-gray-600"
                   placeholder={t('placeholder_message')}
                   required
                 ></textarea>
@@ -206,11 +221,11 @@ const ContactUs = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-brand-secondary transform hover:-translate-y-0.5'} bg-brand-primary text-black font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-brand-primary/20 transition-all duration-200 flex items-center justify-center space-x-2`}
+                className={`w-full ${loading ? 'opacity-60 cursor-not-allowed' : 'hover:bg-brand-secondary hover:-translate-y-0.5'} bg-brand-primary text-[#050E12] font-bold py-3.5 px-6 rounded-lg shadow-lg shadow-brand-primary/10 transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-1`}
               >
                 <span>{loading ? t('sending_btn') : t('send_message_btn')}</span>
                 {!loading && (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 )}
