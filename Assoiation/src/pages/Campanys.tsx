@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-import image1 from '../../public/images/WhatsApp Image 2026-02-07 at 4.07.57 PM.jpeg';
-import image2 from '../../public/images/WhatsApp Image 2026-02-07 at 4.22.59 PM.jpeg';
-import image3 from '../../public/images/WhatsApp Image 2026-02-07 at 4.23.11 PM.jpeg';
-
 export default function TaxationServices() {
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = 7;
@@ -13,18 +9,18 @@ export default function TaxationServices() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPage((prev) => (prev + 1) % totalPages);
-    }, 10000); // 10 seconds for user readability
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
   const backgroundImages = [
-    'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-50',
-    image1,
-    image2,
-    image3,
-    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-50',
-    'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-50',
-    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80&sat=-50'
+    '/images/slide-ariya-profile.jpg',
+    '/images/slide-steel-union.jpg',
+    '/images/slide-folad-iron.jpg',
+    '/images/slide-pipe-production.jpg',
+    '/images/slide-herat-industrial.jpg',
+    '/images/slide-mazar-factory.jpg',
+    '/images/slide-metal-construction.jpg'
   ];
 
   const pageData = [
