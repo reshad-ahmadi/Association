@@ -91,11 +91,11 @@ const HeroSection = () => {
                 key={index}
                 className="relative flex-shrink-0 group px-6 md:px-8"
               >
-                <div className="relative h-10 w-24 md:h-10 md:w-28 flex items-center justify-center transition-all duration-300">
+                <div className="relative h-16 w-36 md:h-20 md:w-44 flex items-center justify-center transition-all duration-300">
                   <img 
                     src={src} 
                     alt={`Partner ${index % images.length + 1}`}
-                    className="w-full h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
                     loading="lazy"
                   />
                 </div>
