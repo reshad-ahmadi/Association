@@ -14,7 +14,7 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Nav
     'home': 'Home',
-    'companies': 'Companies',
+    'companies': 'Members',
     'contact': 'Contact',
     'select_language': 'Select Language',
     
@@ -149,7 +149,7 @@ const translations: Record<Language, Record<string, string>> = {
   da: {
     // Nav
     'home': 'خانه',
-    'companies': 'شرکت‌ها',
+    'companies': 'اعضا',
     'contact': 'تماس',
     'select_language': 'انتخاب زبان',
 
@@ -170,7 +170,7 @@ const translations: Record<Language, Record<string, string>> = {
     'our_members': '( اعضای ما )',
     'leading': 'شرکت‌های',
     'companies_highlight': 'پیشرو',
-    'companies_desc': 'تولیدکنندگان برتر صنعتی و کارخانجاتی که ستون فقرات صنعت فولاد و پروفیل افغانستان را تشکیل می‌دهند را کشف کنید.',
+    'companies_desc': 'تولیدکنندگان برتر صنعتی و کارخانجاتی که ستون فقرات صنعت فولاد و پروفیل افغانستان را تش��یل می‌دهند را کشف کنید.',
     'all': 'همه',
     'loading_units': 'در حال بارگذاری واحدهای تولیدی...',
     'view_profile': 'مشاهده پروفایل',
@@ -284,7 +284,7 @@ const translations: Record<Language, Record<string, string>> = {
   ps: {
     // Nav
     'home': 'کور',
-    'companies': 'شرکتونه',
+    'companies': 'غړي',
     'contact': 'اړیکه',
     'select_language': 'ژبه غوره کړئ',
 

@@ -60,7 +60,7 @@ export default function AdminPanel() {
         setMessage({ type: 'success', text: 'Company added successfully!' });
         setFormData({ name: '', category: '', description: '', location: '', image: '' });
         setImageFile(null);
-        setTimeout(() => navigate('/companies'), 2000);
+        setTimeout(() => navigate('/members'), 2000);
       } else {
         setMessage({ type: 'error', text: 'Failed to add company.' });
       }
@@ -157,7 +157,7 @@ export default function AdminPanel() {
 
             <div className="pt-4 flex gap-4">
               <button 
-                type="button" onClick={() => navigate('/companies')}
+                type="button" onClick={() => navigate('/members')}
                 className="flex-1 py-4 rounded-xl border border-white/10 font-bold text-sm uppercase tracking-wider hover:bg-white/5 transition-all text-gray-400"
               >
                 Cancel
