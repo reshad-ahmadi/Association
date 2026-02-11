@@ -101,6 +101,26 @@ const translations: Record<Language, Record<string, string>> = {
      'stats_quality_label': "Quality Standards",
      'stats_quality_desc': "We are committed to international manufacturing excellence, ensuring every iron, pipe, and profile product meets the highest industrial benchmarks.",
      
+     // Products Section
+     'products_header': '( OUR PRODUCTS )',
+     'products_title': 'Iron Pipes & Galvanized Products',
+     'products_subtitle': 'Our member factories produce a wide range of high-quality iron and galvanized pipe products, built to meet international industrial standards for construction and infrastructure.',
+     'product_iron_title': 'Iron Pipes',
+     'product_iron_desc': 'Heavy-duty black iron pipes manufactured for structural applications, water distribution, gas lines, and industrial construction projects across Afghanistan.',
+     'product_iron_f1': 'High tensile strength for structural use',
+     'product_iron_f2': 'Available in multiple diameters and thicknesses',
+     'product_iron_f3': 'Suitable for water, gas, and oil transport',
+     'product_galvanized_title': 'Galvanized Pipes',
+     'product_galvanized_desc': 'Zinc-coated steel pipes offering superior corrosion resistance, ideal for plumbing, fencing, scaffolding, and outdoor infrastructure applications.',
+     'product_galvanized_f1': 'Zinc coating for corrosion protection',
+     'product_galvanized_f2': 'Long lifespan in harsh environments',
+     'product_galvanized_f3': 'Perfect for plumbing and outdoor use',
+     'product_profiles_title': 'Steel Profiles & Cans',
+     'product_profiles_desc': 'Precision-engineered steel profiles including I-beams, channels, angles, and square/rectangular cans for commercial and residential construction.',
+     'product_profiles_f1': 'Wide range of shapes and sizes',
+     'product_profiles_f2': 'Precision-cut for construction accuracy',
+     'product_profiles_f3': 'Load-bearing structural applications',
+
      // Navigation Component
      'trusted_leaders': "Trusted by Leaders",
 
@@ -216,6 +236,26 @@ const translations: Record<Language, Record<string, string>> = {
     'stats_quality_label': 'استانداردهای کیفیت',
     'stats_quality_desc': 'ما متعهد به تعالی تولید بین‌المللی هستیم و اطمینان می‌دهیم که هر محصول آهن، لوله و پروفیل با بالاترین معیارهای استاندارد صنعتی مطابقت دارد.',
 
+    // Products Section
+    'products_header': '( محصولات ما )',
+    'products_title': 'لوله‌های آهنی و محصولات گالوانیزه',
+    'products_subtitle': 'کارخانه‌های عضو ما طیف گسترده‌ای از محصولات لوله‌های آهنی و گالوانیزه با کیفیت بالا تولید می‌کنند که مطابق استانداردهای بین‌المللی صنعتی برای ساخت و ساز و زیرساخت ساخته شده‌اند.',
+    'product_iron_title': 'لوله‌های آهنی',
+    'product_iron_desc': 'لوله‌های آهنی سیاه سنگین برای کاربردهای سازه‌ای، توزیع آب، خطوط گاز و پروژه‌های ساختمانی صنعتی در سراسر افغانستان تولید می‌شوند.',
+    'product_iron_f1': 'استحکام کششی بالا برای استفاده سازه‌ای',
+    'product_iron_f2': 'موجود در قطرها و ضخامت‌های مختلف',
+    'product_iron_f3': 'مناسب برای حمل و نقل آب، گاز و نفت',
+    'product_galvanized_title': 'لوله‌های گالوانیزه',
+    'product_galvanized_desc': 'لوله‌های فولادی با پوشش روی که مقاومت عالی در برابر خوردگی دارند، ایده‌آل برای لوله‌کشی، حصارکشی، داربست و کاربردهای زیرساختی فضای باز.',
+    'product_galvanized_f1': 'پوشش روی برای محافظت در برابر خوردگی',
+    'product_galvanized_f2': 'عمر طولانی در محیط‌های سخت',
+    'product_galvanized_f3': 'مناسب برای لوله‌کشی و استفاده در فضای باز',
+    'product_profiles_title': 'پروفیل‌های فولادی و قوطی',
+    'product_profiles_desc': 'پروفیل‌های فولادی مهندسی شده شامل تیرآهن، ناودانی، نبشی و قوطی‌های مربع/مستطیل برای ساخت و ساز تجاری و مسکونی.',
+    'product_profiles_f1': 'طیف گسترده‌ای از اشکال و اندازه‌ها',
+    'product_profiles_f2': 'برش دقیق برای صحت ساختمانی',
+    'product_profiles_f3': 'کاربردهای سازه‌ای باربر',
+
     // Navigation Component
     'trusted_leaders': 'مورد اعتماد رهبران',
 
@@ -330,6 +370,26 @@ const translations: Record<Language, Record<string, string>> = {
     'stats_provinces_desc': 'له هرات څخه تر مزار پورې، زموږ فعالیتونه په لویو صنعتي مرکزونو کې پراخه دي، چې په ټول هیواد کې د دوامداره عرضه او د لوړې کچې تولید معیارونه تضمینوي.',
     'stats_quality_label': 'د کیفیت معیارونه',
     'stats_quality_desc': 'موږ د نړیوال تولید غوره والي ته ژمن یو، ډاډ ترلاسه کوو چې هر اوسپنه، پایپ او پروفیل محصول د لوړو صنعتي معیارونو سره سمون لري.',
+
+    // Products Section
+    'products_header': '( زموږ محصولات )',
+    'products_title': 'د اوسپنې پایپونه او ګالوانیز محصولات',
+    'products_subtitle': 'زموږ غړي فابریکې د لوړ کیفیت اوسپنې او ګالوانیز پایپ محصولاتو پراخه لړۍ تولیدوي، چې د ساختمان او زیربنا لپاره د نړیوالو صنعتي معیارونو سره سم جوړ شوي.',
+    'product_iron_title': 'د اوسپنې پایپونه',
+    'product_iron_desc': 'درنې توره اوسپنې پایپونه چې د سازه‌ایی کارونو، د اوبو ویش، د ګاز لینونو او په ټول افغانستان کې د صنعتي ساختماني پروژو لپاره تولیدیږي.',
+    'product_iron_f1': 'د سازه‌ایی کارونو لپاره لوړ کششي ځواک',
+    'product_iron_f2': 'په مختلفو قطرونو او ضخامتونو کې شتون لري',
+    'product_iron_f3': 'د اوبو، ګاز او تیلو لیږد لپاره مناسب',
+    'product_galvanized_title': 'ګالوانیز پایپونه',
+    'product_galvanized_desc': 'د زنګ پوښ لرونکي فولادي پایپونه چې د زنګ وهلو پر وړاندې غوره مقاومت وړاندې کوي، د پلمبینګ، باڼ جوړولو، داربست او بهرني زیربنایی کارونو لپاره مناسب.',
+    'product_galvanized_f1': 'د زنګ وهلو مخنیوی لپاره زنګ پوښ',
+    'product_galvanized_f2': 'په سختو چاپیریالونو کې اوږد عمر',
+    'product_galvanized_f3': 'د پلمبینګ او بهرني کارولو لپاره مناسب',
+    'product_profiles_title': 'فولادي پروفیلونه او قوطي',
+    'product_profiles_desc': 'دقیق مهندسي شوي فولادي پروفیلونه شمیره تیرآهن، ناودانی، نبشی او مربع/مستطیل قوطي د سوداګریز او استوګنیز ساختمان لپاره.',
+    'product_profiles_f1': 'د شکلونو او اندازو پراخه لړۍ',
+    'product_profiles_f2': 'د ساختماني دقت لپاره دقیق پرې شوي',
+    'product_profiles_f3': 'د بار وړونکي سازه‌ایی کارونه',
 
     // Navigation Component
     'trusted_leaders': 'د مشرانو لخوا باور شوی',

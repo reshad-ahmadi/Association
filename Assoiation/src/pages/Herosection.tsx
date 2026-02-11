@@ -11,8 +11,8 @@ const HeroSection = () => {
       {/* Background Image with High-Intensity Industrial Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2000&auto=format&fit=crop" 
-          alt="Heavy Industrial Construction Site"
+          src="/images/hero-bg.jpg" 
+          alt="Industrial Steel and Iron Pipe Manufacturing"
           className="w-full h-full object-cover opacity-160 object-center"
         />
         {/* Advanced Multi-Layer Blue Overlay */}
