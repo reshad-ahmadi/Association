@@ -1,12 +1,31 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const images = [
+    "/images/ARIYA_PROFILE.jpg-removebg-preview.png",
+    "/images/FOLAD_PROFILE.jpg-removebg-preview.png",
+    "/images/GHAZNAWI_PROFILE.jpg-removebg-preview.png",
+    "/images/HERAT_AFGHAN_PROFILE.jpg-removebg-preview.png",
+    "/images/KAMRAN_PROFILE.jpg-removebg-preview.png",
+    "/images/MAZAR_PROFILE.jpg-removebg-preview.png",
+    "/images/RIAL_PROFILE.jpg-removebg-preview.png",
+    "/images/SHAMAL_PROFILE.jpg-removebg-preview.png",
+    "/images/SHIRZAD_PROFILE.jpg-removebg-preview.png",
+    "/images/VICTOR_PIPE.jpg-removebg-preview.png",
+  ];
+
+  const duplicatedImages = [...images, ...images, ...images, ...images];
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
-    <section className="relative bg-[#0B1222] text-white overflow-hidden flex flex-col justify-center items-center pt-32 pb-[30px] mb-5 md:mb-[130px]">
+    <section className="relative bg-[#0B1222] text-white overflow-hidden flex flex-col justify-center items-center pt-32 pb-0 mb-5 md:mb-[130px]">
       
       {/* Background Image with High-Intensity Industrial Overlay */}
       <div className="absolute inset-0 z-0">
@@ -34,7 +53,7 @@ const HeroSection = () => {
           <span className="text-blue-400 text-[10px] sm:text-xs">✦</span>
         </div>
 
-        {/* Main Headline - Using Red Accents like the reference */}
+        {/* Main Headline */}
         <h1 className="text-3xl sm:text-5xl md:text-[30px] lg:text-[36px] 2xl:text-[65px]  font-extrabold tracking-tight text-white mb-4 sm:mb-6 leading-[1.1]">
           <span className="block  mb-2">{t('hero_title_1')}</span>
           <span className=" uppercase font-black sm:text-4xl md:text-[24px] lg:text-[30px] 2xl:text-[65px] text-gray-200">
@@ -42,7 +61,7 @@ const HeroSection = () => {
           </span>
         </h1>
 
-        {/* Subheadline description - Improved for readability on dark */}
+        {/* Subheadline description */}
         <p className="mt-8 sm:mt-10 max-w-2xl 2xl:max-w-5xl mx-auto text-sm sm:text-lg md:text-[16px]
          md:max-w-[700px] lg:text-[16px] 2xl:text-[28px] text-blue-100/80 mb-8 sm:mb-12 leading-relaxed font-medium">
           "{t('hero_desc')}"
@@ -53,6 +72,50 @@ const HeroSection = () => {
           text-sm sm:text-base font-bold rounded-lg whitespace-nowrap">
             {t('join_now')}
           </button>
+        </div>
+      </div>
+
+      {/* Trusted by Leaders - inside hero with same background */}
+      <div className="relative z-10 w-full mt-10 sm:mt-14 pb-6">
+        <div className="flex items-center justify-center gap-4 mb-6 text-gray-400 text-[10px] sm:text-sm md:text-xs font-medium tracking-widest uppercase opacity-70">
+          <div className="h-[1px] w-8 sm:w-12 md:w-10 bg-gray-500"></div>
+          <span className="whitespace-nowrap">{t('trusted_leaders')}</span>
+          <div className="h-[1px] w-8 sm:w-12 md:w-10 bg-gray-500"></div>
+        </div>
+
+        <div className="relative w-full overflow-hidden py-[18px] border-y border-white/10">
+          {/* Main scrolling container */}
+          <div className="flex w-max animate-scroll hover:pause items-center">
+            {duplicatedImages.map((src, index) => (
+              <div 
+                key={index}
+                className="relative flex-shrink-0 group px-6 md:px-8"
+              >
+                <div className="relative h-10 w-24 md:h-10 md:w-28 flex items-center justify-center transition-all duration-300">
+                  <img 
+                    src={src} 
+                    alt={`Partner ${index % images.length + 1}`}
+                    className="w-full h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#0B1222]/80 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#0B1222]/80 to-transparent pointer-events-none z-10"></div>
+          
+          {/* Loading indicator */}
+          {!isLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-[#0B1222]/80 z-20">
+              <div className="flex space-x-2">
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-100"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-200"></div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

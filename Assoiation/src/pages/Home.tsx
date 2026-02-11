@@ -1,5 +1,4 @@
 import Navbar from "../components/Nav"
-import Navigation from "../components/navigation";
 import About from "../pages/About";
 import Campanys from "../pages/Campanys";
 import Products from "../pages/Products";
@@ -12,7 +11,6 @@ export default function Home() {
     <div className="bg-brand-bg">
       <Navbar />
       <HeroSection />
-      <Navigation/>
       <Campanys/>
       <Products/>
       <About/>
